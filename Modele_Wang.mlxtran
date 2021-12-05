@@ -1,0 +1,61 @@
+<DATAFILE>
+
+[FILEINFO]
+file='tumeur_Dose.csv'
+delimiter = comma
+header = {ID, time, SLD, AGE, BLIVER, BHBG, dose}
+
+[CONTENT]
+ID = {use=identifier}
+time = {use=time}
+SLD = {use=observation, name=SLD, type=continuous}
+AGE = {use=covariate, type=continuous}
+BLIVER = {use=covariate, type=categorical}
+BHBG = {use=covariate, type=continuous}
+dose = {use=amount}
+
+<MODEL>
+
+[INDIVIDUAL]
+input = {BSLD_pop, omega_BSLD, d_pop, omega_d, g_pop, omega_g}
+
+DEFINITION:
+BSLD = {distribution=logNormal, typical=BSLD_pop, sd=omega_BSLD}
+d = {distribution=logNormal, typical=d_pop, sd=omega_d}
+g = {distribution=logNormal, typical=g_pop, sd=omega_g}
+
+[LONGITUDINAL]
+input = {a, b}
+
+file = 'Modele de Wang.txt'
+
+DEFINITION:
+SLD_ = {distribution=normal, prediction=SLD, errorModel=combined1(a, b)}
+
+<FIT>
+data = SLD
+model = SLD_
+
+<PARAMETER>
+BSLD_pop = {value=1, method=MLE}
+a = {value=1, method=MLE}
+b = {value=0.3, method=MLE}
+d_pop = {value=1, method=MLE}
+g_pop = {value=1, method=MLE}
+omega_BSLD = {value=1, method=MLE}
+omega_d = {value=1, method=MLE}
+omega_g = {value=1, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(method = StochasticApproximation)
+logLikelihood(method = ImportanceSampling)
+plotResult(method = {indfits, parameterdistribution, covariancemodeldiagnosis, covariatemodeldiagnosis, obspred, vpc, residualsscatter, residualsdistribution, randomeffects, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = 'Modele_Wang'
+
