@@ -16,33 +16,41 @@ dose = {use=amount}
 
 <MODEL>
 
+[COVARIATE]
+input = BLIVER
+
+BLIVER = {type=categorical, categories={FALSE, TRUE}}
+
 [INDIVIDUAL]
-input = {BSLD_pop, omega_BSLD, d_pop, omega_d, g_pop, omega_g}
+input = {BSLD_pop, omega_BSLD, d_pop, omega_d, g_pop, omega_g, BLIVER, beta_d_BLIVER_TRUE, beta_g_BLIVER_TRUE}
+
+BLIVER = {type=categorical, categories={FALSE, TRUE}}
 
 DEFINITION:
 BSLD = {distribution=logNormal, typical=BSLD_pop, sd=omega_BSLD}
-d = {distribution=logNormal, typical=d_pop, sd=omega_d}
-g = {distribution=logNormal, typical=g_pop, sd=omega_g}
+d = {distribution=logNormal, typical=d_pop, covariate=BLIVER, coefficient={0, beta_d_BLIVER_TRUE}, sd=omega_d}
+g = {distribution=logNormal, typical=g_pop, covariate=BLIVER, coefficient={0, beta_g_BLIVER_TRUE}, sd=omega_g}
 
 [LONGITUDINAL]
-input = {a, b}
+input = {a}
 
 file = 'Modele de Wang.txt'
 
 DEFINITION:
-SLD_ = {distribution=normal, prediction=SLD, errorModel=combined1(a, b)}
+SLD_ = {distribution=normal, prediction=SLD, errorModel=constant(a)}
 
 <FIT>
 data = SLD
 model = SLD_
 
 <PARAMETER>
-BSLD_pop = {value=1, method=MLE}
-a = {value=1, method=MLE}
-b = {value=0.3, method=MLE}
-d_pop = {value=1, method=MLE}
-g_pop = {value=1, method=MLE}
-omega_BSLD = {value=1, method=MLE}
+BSLD_pop = {value=61.13651383056483, method=MLE}
+a = {value=3.094805978457622, method=MLE}
+beta_d_BLIVER_TRUE = {value=3.207124700576815, method=MLE}
+beta_g_BLIVER_TRUE = {value=3.034382174663486, method=MLE}
+d_pop = {value=0.0006918752894735, method=MLE}
+g_pop = {value=0.0351334451215016, method=MLE}
+omega_BSLD = {value=50, method=MLE}
 omega_d = {value=1, method=MLE}
 omega_g = {value=1, method=MLE}
 
