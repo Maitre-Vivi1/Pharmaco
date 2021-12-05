@@ -69,3 +69,32 @@ ggplot(data = tumeur, aes(x = time, y = SLD, col = ID)) +
   geom_line() +
   theme(legend.position='none') +
   ggtitle("Évolution de la taille de la tumeur chez\nles patients en fonction du temps")
+
+
+# Modele de wang ----------------------------------------------------------
+
+# BSLD * exp(-d*t) + g*t
+
+# BSLD serait le niveau initial moyen de SLD chez les patients
+
+BSLD <- mean(tumeur$SLD[which(tumeur$time == 0)])
+BSLD_sd <- sd(tumeur$SLD[which(tumeur$time == 0)])
+
+# d est un paramètre représentant la vitesse de décroissance initiale de la tumeur
+# g est un paramètre représentant la vitesse de croissance de la tumeur une fois que le traitement n'est plus efficace
+
+# On pourrait estimer d et g en lançant l'analyse sur quelques sujets
+# Par exemple sur 5 sujets
+
+# Sinon on pourrait regarder dans la littérature
+
+
+res_nls <- nls(formula = BSLD * exp(-d* time) + g*time, data = tumeur[which(tumeur$ID %in% c(1238,1025,5003,1120,1181)),],
+               start = list(d = 1, g = 1))
+
+
+
+
+
+
+
