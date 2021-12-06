@@ -1,0 +1,10 @@
+DESCRIPTION: Chatterjee's model description with an analytical expression 
+
+[LONGITUDINAL]
+input = {BSLD, d, g, phi}
+
+EQUATION:
+SLD = BSLD * (phi * exp(-d * t) + (1 - phi) * exp(g * t))
+
+OUTPUT:
+output = {SLD}

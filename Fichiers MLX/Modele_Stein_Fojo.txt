@@ -1,0 +1,10 @@
+DESCRIPTION: Stein-Fojo's model description with an analytical expression 
+
+[LONGITUDINAL]
+input = {BSLD, d, g}
+
+EQUATION:
+SLD = BSLD * exp((-d * t) + exp(g * t) -1)
+
+OUTPUT:
+output = {SLD}
