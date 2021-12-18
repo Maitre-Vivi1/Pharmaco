@@ -6,7 +6,7 @@ library(ggplot2)
 
 # Données -----------------------------------------------------------------
 
-tumeur <- read_table2("Exercice 1/PD_data_tumor_growth_no_NA.txt")
+tumeur <- read_table2("C:/Users/vivi1/Desktop/Ensai 3A/Projet Pharma/Pharmaco/Exercice 1/PD_data_tumor_growth_no_NA.txt")
 
 tumeur$ID <- as.factor(tumeur$ID) # Codage en variable qualitative
 tumeur$BLIVER <- as.logical(tumeur$BLIVER) # Codage en indicatrice
@@ -68,7 +68,7 @@ sum(summary(Dose$ID)==1) # 15 patients n'ont reçu qu'une dose
 ggplot(data = tumeur, aes(x = time, y = SLD, col = ID)) +
   geom_line() +
   theme(legend.position='none') +
-  ggtitle("Évolution de la taille de la tumeur chez\nles patients en fonction du temps")
+  ggtitle("Évolution de la taille tumorale chez\nles patients en fonction du temps")
 
 
 # Modele de wang ----------------------------------------------------------
@@ -88,9 +88,27 @@ BSLD_sd <- sd(tumeur$SLD[which(tumeur$time == 0)])
 
 # Sinon on pourrait regarder dans la littérature
 
+tumeur$indice <- 0
+for (i in 2:130) {
+  if (tumeur$SLD[i] > tumeur$SLD[i-1] & tumeur$ID[i] == tumeur$ID[i-1] ) {
+    tumeur$indice[i] <- 1
+  }
+}
 
-res_nls <- nls(formula = BSLD * exp(-d* time) + g*time, data = tumeur[which(tumeur$ID %in% c(1238,1025,5003,1120,1181)),],
-               start = list(d = 1, g = 1))
+
+# Pour g ------------------------------------------------------------------
+
+library(nlme)
+reg_param_croiss <- lme(SLD~time, data = tumeur[which(tumeur$indice==1),], random = ~ 1 + time | ID, method = "ML")
+summary(reg_param_croiss) # g estimé à 0.09255
+
+
+
+reg_param_decroiss <- lme(SLD~time, data = tumeur[which(tumeur$indice==0),], random = ~ 1 + time | ID, method = "ML")
+summary(reg_param_decroiss)  # Ne pas oublier qu'on est dans une exponentielle
+log(0.23689) # d = 1.440159 
+-exp(log(0.23689))
+
 
 
 
