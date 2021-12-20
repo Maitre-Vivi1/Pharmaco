@@ -6,7 +6,7 @@ library(ggplot2)
 
 # Données -----------------------------------------------------------------
 
-tumeur <- read_table2("C:/Users/vivi1/Desktop/Ensai 3A/Projet Pharma/Pharmaco/Exercice 1/PD_data_tumor_growth_no_NA.txt")
+tumeur <- read_table2("PD_data_tumor_growth_no_NA.txt")
 
 tumeur$ID <- as.factor(tumeur$ID) # Codage en variable qualitative
 tumeur$BLIVER <- as.logical(tumeur$BLIVER) # Codage en indicatrice
@@ -52,6 +52,11 @@ write.csv(tumeur_Dose, row.names = F, na = ".", file = "tumeur_Dose.csv") # Tabl
 
 
 # Résumé des données ------------------------------------------------------
+p <- theme(
+  plot.title = element_text(hjust = 0.5, face = "bold"),
+  axis.text = element_text(face = "bold"),
+  axis.title = element_text(face = "bold")
+)
 
 summary(tumeur)
 
@@ -77,7 +82,8 @@ sum(summary(Dose$ID)==1) # 15 patients n'ont reçu qu'une dose
 ggplot(data = tumeur, aes(x = time, y = SLD, col = ID)) +
   geom_line() +
   theme(legend.position='none') +
-  ggtitle("Évolution de la taille tumorale chez\nles patients en fonction du temps")
+  p +
+  ggtitle("Évolution de la taille tumorale chez les patients en fonction du temps")
 
 
 # Modele de wang ----------------------------------------------------------
@@ -153,16 +159,6 @@ summary(reg_param_decroiss_SteinFojo)
 
 # log(exp(-d*t)-1) = -0.004035
 -log(exp(-0.004035) + 1)
-
-
-
-
-
-
-
-
-
-
 
 
 
