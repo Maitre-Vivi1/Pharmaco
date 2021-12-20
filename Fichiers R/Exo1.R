@@ -147,7 +147,7 @@ g_sd_SteinFojo <- 0.001322597/0.01384131*g_SteinFojo
 
 # Pour d ------------------------------------------------------------------
 
-reg_param_decroiss_SteinFojo <- lme(SLD/BSLD~time , data = tumeur[which(tumeur$indice==0),], random = ~ 1 + time | ID, method = "ML",
+reg_param_decroiss_SteinFojo <- lme(SLD~time , data = df, random = ~ 1 + time | ID, method = "ML",
                                     control =  lmeControl(maxIter = 500, niterEM = 500, msMaxEval = 500,msMaxIter = 500))
 summary(reg_param_decroiss_SteinFojo)
 
@@ -157,8 +157,8 @@ summary(reg_param_decroiss_SteinFojo)
 
 
 
-
-
+df <- tumeur[which(tumeur$indice==1),]
+df$SLD <- df$SLD / df$BSLD
 
 
 

@@ -1,0 +1,105 @@
+********************************************************************************
+*                        Modele_Stein_Fojo.mlxtran                             *
+*                        December 20, 2021 at 11:54:49                         *
+*                        Monolix version : 2020R1                              *
+********************************************************************************
+
+
+ESTIMATION OF THE POPULATION PARAMETERS ________________________________________
+
+Fixed Effects ----------------------------     se_sa    rse(%)
+BSLD_pop   :                          61.4      5.59       9.1
+d_pop      :                       0.00148  0.000515      34.8
+g_pop      :                       0.00107  0.000249      23.3
+
+Standard Deviation of the Random Effects -
+omega_BSLD :                         0.636    0.0646      10.1
+omega_d    :                          1.47     0.266        18
+omega_g    :                          1.14      0.18      15.8
+
+Error Model Parameters -------------------
+a          :                         0.419     0.124      29.5
+b          :                        0.0234   0.00454      19.4
+
+Elapsed time (seconds) :     4.7
+
+ _______________________________________________________________________________
+
+
+
+ESTIMATION OF THE INDIVIDUAL PARAMETERS ________________________________________
+
+
+Estimation of the individual parameters by Conditional Distribution ------------
+             min        Q1    median        Q3       max
+BSLD :      16.7      41.8      55.3      94.2       224
+d    :  0.000403  0.000939   0.00337   0.00529    0.0228
+g    :   6.86e-5  0.000923    0.0016    0.0022    0.0115
+
+Elapsed time (seconds) :    0.95
+
+ -------------------------------------------------------------------------------
+
+
+Estimation of the individual parameters by Conditional Mode --------------------
+             min        Q1    median        Q3       max
+BSLD :      16.8      41.8      55.1      93.9       224
+d    :  0.000535   0.00103   0.00148   0.00212    0.0225
+g    :   7.47e-5  0.000997   0.00107   0.00186    0.0115
+
+Elapsed time (seconds) :   0.021
+
+ -------------------------------------------------------------------------------
+
+ _______________________________________________________________________________
+
+
+
+ESTIMATION OF THE FISHER INFORMATION MATRIX ____________________________________
+
+
+Estimation of the Fisher information matrix by Stochastic Approximation --------
+
+Correlation Matrix :
+  BSLD_pop         1
+     d_pop 0.0073388         1
+     g_pop-0.0035686   0.20604         1
+omega_BSLD-0.00025155 -0.003735-0.0045922         1
+   omega_d-0.0055905  -0.43825  -0.15245  0.002864         1
+   omega_g -0.001437 -0.076726  -0.29008 0.0045201   0.05314         1
+         a-0.0038603-0.0020218 -0.021553 0.0088297 0.0048358  0.041097         1
+         b  0.005639   0.17033    0.1099-0.0074681  -0.18751  -0.16588  -0.48641         1
+
+                               min       max   max/min
+Eigen values           :      0.47       1.8       3.9
+
+Elapsed time (seconds) :   0.094
+
+ -------------------------------------------------------------------------------
+
+ _______________________________________________________________________________
+
+
+
+ESTIMATION OF THE LOG-LIKELIHOOD _______________________________________________
+
+                                                            (is)
+-2 x log-likelihood                       (OFV) :        1035.43
+Akaike Information Criteria               (AIC) :        1051.43
+Corrected Bayesian Information Criteria  (BICc) :        1071.45
+Bayesian Information Criteria             (BIC) :        1066.57
+
+Elapsed time                          (seconds) :           3.68
+CPU time                              (seconds) :           3.00
+
+
+[Importance Sampling] Standard error        : 0.376
+                      Sampling distribution : T-distribution with 5 degrees of freedom
+
+ _______________________________________________________________________________
+
+DATASET INFORMATION
+Number of individuals: 49
+Number of observations (SLD): 130
+Number of doses: 288
+
