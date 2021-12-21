@@ -1,0 +1,63 @@
+<DATAFILE>
+
+[FILEINFO]
+file='../../../Exercice 1/tumeur_Dose.csv'
+delimiter = comma
+header = {ID, time, SLD, AGE, BLIVER, BHBG, dose}
+
+[CONTENT]
+ID = {use=identifier}
+time = {use=time}
+SLD = {use=observation, name=SLD, type=continuous}
+AGE = {use=covariate, type=continuous}
+BLIVER = {use=covariate, type=categorical}
+BHBG = {use=covariate, type=continuous}
+dose = {use=amount}
+
+<MODEL>
+
+[INDIVIDUAL]
+input = {BSLD_pop, omega_BSLD, d_pop, omega_d, g_pop, omega_g, phi_pop, omega_phi}
+
+DEFINITION:
+BSLD = {distribution=logNormal, typical=BSLD_pop, sd=omega_BSLD}
+d = {distribution=logNormal, typical=d_pop, sd=omega_d}
+g = {distribution=logNormal, typical=g_pop, sd=omega_g}
+phi = {distribution=logNormal, typical=phi_pop, sd=omega_phi}
+
+[LONGITUDINAL]
+input = {a}
+
+file = '../../Modele_Chatterjee.txt'
+
+DEFINITION:
+SLD_ = {distribution=logNormal, prediction=SLD, errorModel=constant(a)}
+
+<FIT>
+data = SLD
+model = SLD_
+
+<PARAMETER>
+BSLD_pop = {value=59.78659034524675, method=MLE}
+a = {value=1, method=MLE}
+d_pop = {value=0.004035, method=MLE}
+g_pop = {value=0.00167, method=MLE}
+omega_BSLD = {value=50.05228, method=MLE}
+omega_d = {value=0.0003733185, method=MLE}
+omega_g = {value=0.0005555, method=MLE}
+omega_phi = {value=0.4823046, method=MLE}
+phi_pop = {value=0.6384615, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(method = StochasticApproximation)
+logLikelihood(method = ImportanceSampling)
+plotResult(method = {indfits, parameterdistribution, covariancemodeldiagnosis, covariatemodeldiagnosis, obspred, vpc, residualsscatter, residualsdistribution, randomeffects, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = '../'
+

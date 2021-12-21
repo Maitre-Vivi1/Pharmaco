@@ -1,0 +1,4 @@
+eta,statistics,p-value
+eta_beta,0.951476,0.779068
+eta_delta,0.950665,0.875905
+eta_p,0.953995,0.967633

@@ -1,0 +1,109 @@
+********************************************************************************
+*                        Modele_Chatterjee.mlxtran                             *
+*                        December 21, 2021 at 15:49:32                         *
+*                        Monolix version : 2020R1                              *
+********************************************************************************
+
+
+ESTIMATION OF THE POPULATION PARAMETERS ________________________________________
+
+Fixed Effects ----------------------------     se_sa    rse(%)
+BSLD_pop   :                            60      5.92      9.85
+d_pop      :                       0.00403   5.82e-6     0.144
+g_pop      :                       0.00167    6.3e-6     0.378
+phi_pop    :                         0.414    0.0944      22.8
+
+Standard Deviation of the Random Effects -
+omega_BSLD :                         0.663    0.0719      10.9
+omega_d    :                       0.00113  0.000797      70.8
+omega_g    :                       0.00342   0.00212      61.8
+omega_phi  :                         0.616     0.188      30.5
+
+Error Model Parameters -------------------
+a          :                         0.219    0.0196      8.93
+
+Elapsed time (seconds) :     2.8
+
+ _______________________________________________________________________________
+
+
+
+ESTIMATION OF THE INDIVIDUAL PARAMETERS ________________________________________
+
+
+Estimation of the individual parameters by Conditional Distribution ------------
+             min        Q1    median        Q3       max
+BSLD :      9.42      42.6      61.2      87.8       184
+d    :   0.00403   0.00403   0.00403   0.00404   0.00404
+g    :   0.00167   0.00167   0.00167   0.00167   0.00167
+phi  :      0.24     0.409     0.487     0.534         1
+
+Elapsed time (seconds) :    0.79
+
+ -------------------------------------------------------------------------------
+
+
+Estimation of the individual parameters by Conditional Mode --------------------
+             min        Q1    median        Q3       max
+BSLD :      9.53      42.3      58.9      89.3       180
+d    :   0.00403   0.00403   0.00403   0.00403   0.00403
+g    :   0.00167   0.00167   0.00167   0.00167   0.00167
+phi  :     0.231     0.393     0.414     0.444      1.07
+
+Elapsed time (seconds) :   0.036
+
+ -------------------------------------------------------------------------------
+
+ _______________________________________________________________________________
+
+
+
+ESTIMATION OF THE FISHER INFORMATION MATRIX ____________________________________
+
+
+Estimation of the Fisher information matrix by Stochastic Approximation --------
+
+Correlation Matrix :
+  BSLD_pop         1
+     d_pop  0.024853         1
+     g_pop 0.0079025  -0.18074         1
+   phi_pop   0.11099   0.07769   0.22356         1
+omega_BSLD 0.0026179  0.046993  0.016824  0.016702         1
+   omega_d -0.014615   0.57077  -0.56715 -0.081684  0.014505         1
+   omega_g 0.0029241   0.52995   0.10446  0.069007  0.046624   0.23157         1
+ omega_phi -0.070843 -0.033204  -0.40784  -0.67377-0.0012455   0.24007 -0.068657         1
+         a 0.0082549   0.10413 -0.023322   0.17039 -0.063583   0.14805 -0.015112  -0.17543         1
+
+                               min       max   max/min
+Eigen values           :      0.27       2.2       8.3
+
+Elapsed time (seconds) :    0.51
+
+ -------------------------------------------------------------------------------
+
+ _______________________________________________________________________________
+
+
+
+ESTIMATION OF THE LOG-LIKELIHOOD _______________________________________________
+
+                                                            (is)
+-2 x log-likelihood                       (OFV) :        1173.77
+Akaike Information Criteria               (AIC) :        1191.77
+Corrected Bayesian Information Criteria  (BICc) :        1213.67
+Bayesian Information Criteria             (BIC) :        1208.79
+
+Elapsed time                          (seconds) :           3.95
+CPU time                              (seconds) :           3.00
+
+
+[Importance Sampling] Standard error        : 0.073
+                      Sampling distribution : T-distribution with 5 degrees of freedom
+
+ _______________________________________________________________________________
+
+DATASET INFORMATION
+Number of individuals: 49
+Number of observations (SLD): 130
+Number of doses: 288
+

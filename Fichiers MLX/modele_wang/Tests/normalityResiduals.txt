@@ -1,4 +1,4 @@
 residuals,statistics,p-value,test
 IWRES_SLD_,0.973403,0.000547351,Shapiro-Wilk
-PWRES_SLD_,0.940163,2.14354e-5,Shapiro-Wilk
-NPDE_SLD_,0.903785,1.23412e-7,Shapiro-Wilk
+PWRES_SLD_,0.942728,3.26396e-5,Shapiro-Wilk
+NPDE_SLD_,0.915665,5.76414e-7,Shapiro-Wilk

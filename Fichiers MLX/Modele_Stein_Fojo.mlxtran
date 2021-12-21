@@ -25,12 +25,12 @@ d = {distribution=logNormal, typical=d_pop, sd=omega_d}
 g = {distribution=logNormal, typical=g_pop, sd=omega_g}
 
 [LONGITUDINAL]
-input = {a, b}
+input = {a}
 
 file = 'Modele_Stein_Fojo.txt'
 
 DEFINITION:
-SLD_ = {distribution=normal, prediction=SLD, errorModel=combined1(a, b)}
+SLD_ = {distribution=normal, prediction=SLD, errorModel=constant(a)}
 
 <FIT>
 data = SLD
@@ -39,12 +39,11 @@ model = SLD_
 <PARAMETER>
 BSLD_pop = {value=74.28085, method=MLE}
 a = {value=1, method=MLE}
-b = {value=0.3, method=MLE}
 d_pop = {value=0.004035, method=MLE}
 g_pop = {value=0.00167, method=MLE}
 omega_BSLD = {value=50.05228, method=MLE}
 omega_d = {value=0.000902, method=MLE}
-omega_g = {value=0.005555, method=MLE}
+omega_g = {value=1, method=MLE}
 
 <MONOLIX>
 

@@ -1,6 +1,6 @@
 ********************************************************************************
 *                        Modele_Stein_Fojo.mlxtran                             *
-*                        December 21, 2021 at 11:48:50                         *
+*                        December 21, 2021 at 18:38:27                         *
 *                        Monolix version : 2020R1                              *
 ********************************************************************************
 
@@ -8,20 +8,19 @@
 ESTIMATION OF THE POPULATION PARAMETERS ________________________________________
 
 Fixed Effects ----------------------------     se_sa    rse(%)
-BSLD_pop   :                          62.6      7.01      11.2
-d_pop      :                       0.00404    1.2e-5     0.299
-g_pop      :                       0.00167  0.000433        26
+BSLD_pop   :                          61.6      5.84      9.48
+d_pop      :                       0.00393  0.000301      7.66
+g_pop      :                       0.00131  0.000416      31.7
 
 Standard Deviation of the Random Effects -
-omega_BSLD :                          0.69     0.079      11.4
-omega_d    :                       0.00323   0.00343       106
-omega_g    :                        0.0965     0.112       116
+omega_BSLD :                          0.64    0.0711      11.1
+omega_d    :                        0.0755    0.0412      54.5
+omega_g    :                          1.14     0.296      25.9
 
 Error Model Parameters -------------------
-a          :                          3.94      1.17      29.7
-b          :                         0.163     0.026        16
+a          :                          8.66      1.01      11.6
 
-Elapsed time (seconds) :     2.3
+Elapsed time (seconds) :     3.5
 
  _______________________________________________________________________________
 
@@ -32,22 +31,22 @@ ESTIMATION OF THE INDIVIDUAL PARAMETERS ________________________________________
 
 Estimation of the individual parameters by Conditional Distribution ------------
              min        Q1    median        Q3       max
-BSLD :       8.3        43      61.4      96.4       204
-d    :   0.00403   0.00404   0.00404   0.00404   0.00404
-g    :    0.0015   0.00166   0.00168   0.00169   0.00174
+BSLD :      15.3      41.2      57.8      95.1       208
+d    :   0.00365   0.00391   0.00393   0.00397   0.00427
+g    :  0.000178   0.00155    0.0022   0.00259    0.0123
 
-Elapsed time (seconds) :    0.46
+Elapsed time (seconds) :    0.61
 
  -------------------------------------------------------------------------------
 
 
 Estimation of the individual parameters by Conditional Mode --------------------
              min        Q1    median        Q3       max
-BSLD :       8.4        42      60.8      94.4       200
-d    :   0.00404   0.00404   0.00404   0.00404   0.00404
-g    :   0.00152   0.00167   0.00167   0.00167   0.00174
+BSLD :      15.9      42.7      57.3      94.2       208
+d    :   0.00362   0.00392   0.00393   0.00393   0.00427
+g    :  0.000158   0.00131   0.00131   0.00218    0.0126
 
-Elapsed time (seconds) :   0.015
+Elapsed time (seconds) :    0.02
 
  -------------------------------------------------------------------------------
 
@@ -62,18 +61,17 @@ Estimation of the Fisher information matrix by Stochastic Approximation --------
 
 Correlation Matrix :
   BSLD_pop         1
-     d_pop  -0.23352         1
-     g_pop  -0.40442   0.60927         1
-omega_BSLD  -0.11839  0.075736   0.21002         1
-   omega_d -0.037877  -0.26743  0.027886  0.052589         1
-   omega_g  0.067554   0.31535 -0.054538 -0.082564  -0.75189         1
-         a   -0.1742   0.10316   0.35917     0.103   0.26326  -0.28226         1
-         b  0.073495 -0.063662  -0.19743 -0.0520390.00072677  -0.11518  -0.60284         1
+     d_pop  0.056733         1
+     g_pop  -0.04946   0.23006         1
+omega_BSLD -0.084557 0.0037066  0.044554         1
+   omega_d-0.0026246  0.077085 -0.077885  0.034406         1
+   omega_g  0.020669  -0.20578  -0.59979 -0.034309-0.0024801         1
+         a  0.010407 -0.025369   0.13991 -0.043951  -0.39395  -0.24908         1
 
                                min       max   max/min
-Eigen values           :      0.19       2.2        12
+Eigen values           :      0.36       1.8       5.1
 
-Elapsed time (seconds) :    0.44
+Elapsed time (seconds) :    0.13
 
  -------------------------------------------------------------------------------
 
@@ -84,16 +82,16 @@ Elapsed time (seconds) :    0.44
 ESTIMATION OF THE LOG-LIKELIHOOD _______________________________________________
 
                                                             (is)
--2 x log-likelihood                       (OFV) :        1194.75
-Akaike Information Criteria               (AIC) :        1210.75
-Corrected Bayesian Information Criteria  (BICc) :        1230.77
-Bayesian Information Criteria             (BIC) :        1225.89
+-2 x log-likelihood                       (OFV) :        1175.61
+Akaike Information Criteria               (AIC) :        1189.61
+Corrected Bayesian Information Criteria  (BICc) :        1206.76
+Bayesian Information Criteria             (BIC) :        1202.86
 
-Elapsed time                          (seconds) :           3.40
+Elapsed time                          (seconds) :           3.89
 CPU time                              (seconds) :           3.00
 
 
-[Importance Sampling] Standard error        : 0.022
+[Importance Sampling] Standard error        : 0.061
                       Sampling distribution : T-distribution with 5 degrees of freedom
 
  _______________________________________________________________________________

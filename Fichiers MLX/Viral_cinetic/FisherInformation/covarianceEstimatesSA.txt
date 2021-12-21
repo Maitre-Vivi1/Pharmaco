@@ -1,0 +1,10 @@
+beta_pop,0.115,-0.067,-0.265,0.000363,-0.000152,nan,nan,-4e-5,nan,0.000722
+delta_pop,-0.067,0.0417,0.156,-0.000504,3.82e-5,nan,nan,-5.1e-5,nan,-0.00013
+p_pop,-0.265,0.156,0.628,-0.000775,0.000166,nan,nan,1.26e-5,nan,-0.00173
+omega_beta,0.000363,-0.000504,-0.000775,0.000719,1.73e-5,nan,nan,1.64e-5,nan,-4.09e-5
+corr_delta_beta,-0.000152,3.82e-5,0.000166,1.73e-5,1.44e-5,nan,nan,4.33e-6,nan,-9.07e-6
+corr_p_beta,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan
+omega_delta,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan
+corr_p_delta,-4e-5,-5.1e-5,1.26e-5,1.64e-5,4.33e-6,nan,nan,1.12e-5,nan,-4.84e-6
+omega_p,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan
+b,0.000722,-0.00013,-0.00173,-4.09e-5,-9.07e-6,nan,nan,-4.84e-6,nan,0.000529

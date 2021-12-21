@@ -1,0 +1,10 @@
+beta_pop,1,-0.969,-0.987,0.04,-0.119,nan,nan,-0.0353,nan,0.0927
+delta_pop,-0.969,1,0.963,-0.092,0.0493,nan,nan,-0.0745,nan,-0.0276
+p_pop,-0.987,0.963,1,-0.0365,0.0553,nan,nan,0.00475,nan,-0.0947
+omega_beta,0.04,-0.092,-0.0365,1,0.17,nan,nan,0.183,nan,-0.0663
+corr_delta_beta,-0.119,0.0493,0.0553,0.17,1,nan,nan,0.341,nan,-0.104
+corr_p_beta,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan
+omega_delta,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan
+corr_p_delta,-0.0353,-0.0745,0.00475,0.183,0.341,nan,nan,1,nan,-0.0628
+omega_p,nan,nan,nan,nan,nan,nan,nan,nan,nan,nan
+b,0.0927,-0.0276,-0.0947,-0.0663,-0.104,nan,nan,-0.0628,nan,1
