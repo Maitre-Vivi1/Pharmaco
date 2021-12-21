@@ -1,0 +1,4 @@
+eta1,eta2,coeff,statistics,p-value
+eta_BSLD,eta_d,0,-0.646112,0.521284
+eta_BSLD,eta_g,0,1.91507,0.0614522
+eta_d,eta_g,0,-0.682995,0.497893

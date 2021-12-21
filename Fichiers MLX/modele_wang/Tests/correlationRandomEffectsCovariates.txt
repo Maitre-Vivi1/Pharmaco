@@ -1,0 +1,10 @@
+eta,covariate,statistics,p-value,test
+eta_BSLD,BLIVER,2.67155,0.108838,Anova
+eta_BSLD,AGE,0.14586,0.884656,Pearson
+eta_BSLD,BHBG,-1.33983,0.186742,Pearson
+eta_d,BLIVER,0.925891,0.340858,Anova
+eta_d,AGE,0.574367,0.568458,Pearson
+eta_d,BHBG,1.13927,0.260362,Pearson
+eta_g,BLIVER,0.686697,0.411479,Anova
+eta_g,AGE,0.620349,0.538024,Pearson
+eta_g,BHBG,0.480123,0.633367,Pearson

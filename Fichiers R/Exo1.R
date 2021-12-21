@@ -6,7 +6,7 @@ library(ggplot2)
 
 # Données -----------------------------------------------------------------
 
-tumeur <- read_table2("PD_data_tumor_growth_no_NA.txt")
+tumeur <- read_table2("C:/Users/vivi1/Desktop/Ensai 3A/Projet Pharma/Pharmaco/Exercice 1/PD_data_tumor_growth_no_NA.txt")
 
 tumeur$ID <- as.factor(tumeur$ID) # Codage en variable qualitative
 tumeur$BLIVER <- as.logical(tumeur$BLIVER) # Codage en indicatrice
@@ -50,6 +50,7 @@ tumeur_Dose <- tumeur_Dose[order(tumeur_Dose$ID, tumeur_Dose$time),]
 
 write.csv(tumeur_Dose, row.names = F, na = ".", file = "tumeur_Dose.csv") # Tableau de données à utiliser sous MLXTRAN
 
+rm(Dose)
 
 # Résumé des données ------------------------------------------------------
 p <- theme(
@@ -115,7 +116,7 @@ for (i in 2:130) {
 
 # Pour Wang ---------------------------------------------------------------
 # g -----------------------------------------------------------------------
-
+# BSLD * exp(-d*t) + g*t
 
 
 library(nlme)
@@ -127,12 +128,14 @@ g_sd_Wang <- 0.045398
 
 # d -----------------------------------------------------------------------
 
-reg_param_decroiss_Wang <- lme(SLD~time, data = tumeur[which(tumeur$indice==0),], random = ~ 1 + time | ID, method = "ML")
+reg_param_decroiss_Wang <- lme(log(SLD)~time , data = tumeur[which(tumeur$indice==0),], random = ~ 1 + time | ID, method = "ML")
 summary(reg_param_decroiss_Wang)  # Ne pas oublier qu'on est dans une exponentielle
-log(0.23689) # d = 1.440159 
--exp(log(0.23689))
-d_Wang <- 1.440159/BSLD
-d_sd_Wang <- 0.060186/0.23689*d_Wang
+
+# -d = -0.004035
+
+d_Wang <- -0.004035
+d_sd_Wang <- -0.00090200/0.004035*d_Wang
+
 
 
 # Pour Stein-Fojo --------------------------------------------------------
@@ -141,28 +144,25 @@ d_sd_Wang <- 0.060186/0.23689*d_Wang
 
 # Pour g ------------------------------------------------------------------
 
-reg_param_croiss_SteinFojo <- lme(SLD/BSLD~time - 1, data = tumeur[which(tumeur$indice==1),], random = ~ 1 + time | ID, method = "ML")
+reg_param_croiss_SteinFojo <- lme(log(SLD)~time, data = tumeur[which(tumeur$indice==1),], random = ~ 1 + time | ID, method = "ML")
 summary(reg_param_croiss_SteinFojo)
 
-# exp(g*t) -1 = 0.01384
-# g*t = ln(1.01384)
+# g = 0.001670
 
-g_SteinFojo <- log(1.01384)
-g_sd_SteinFojo <- 0.001322597/0.01384131*g_SteinFojo
+g_SteinFojo <- 0.001670
+g_sd_SteinFojo <- 0.0005555/0.001670 *g_SteinFojo
 
 
 # Pour d ------------------------------------------------------------------
-df <- tumeur[which(tumeur$indice==0),]
-df$SLD <- df$SLD / df$BSLD
 
-reg_param_decroiss_SteinFojo <- lme(SLD~time , data = df, random = ~ 1 + time | ID, method = "ML")
+reg_param_decroiss_SteinFojo <- lme(log(SLD)~time , data = tumeur[which(tumeur$indice==0),], random = ~ 1 + time | ID, method = "ML")
 summary(reg_param_decroiss_SteinFojo)
 
 # exp(-d*t)-1 = 0.0026980
 # exp(-d*t) = 1.002698
 # -d*t = log(1.002698)
-d_SteinFojo <- log(1.002698)
-d_sd_SteinFojo <-0.00091122/0.0026980*d_SteinFojo
+d_SteinFojo <- 0.004035
+d_sd_SteinFojo <-0.00090200/0.004035*d_SteinFojo
 
 
 
@@ -178,14 +178,13 @@ phi = 1 - mean(tumeur$indice)
 # Pour g ------------------------------------------------------------------
 
 
-reg_param_croiss_Chatterjee <- lme(SLD~time , data = tumeur[which(tumeur$indice==1),], random = ~ 1 + time | ID, method = "ML")
+reg_param_croiss_Chatterjee <- lme(log(SLD)~time , data = tumeur[which(tumeur$indice==1),], random = ~ 1 + time | ID, method = "ML")
 summary(reg_param_croiss_Chatterjee)
 
-# BSLD*phi*exp(g*t) = 0.09255
-# g*t = log(0.09255 /phi / BSLD)
+g = 0.001670 - log(1-phi)
 
-log(0.09255/phi/BSLD)
-
+g_Chatterjee
+g_sd_Chatterjee
 
 # Pour d ------------------------------------------------------------------
 

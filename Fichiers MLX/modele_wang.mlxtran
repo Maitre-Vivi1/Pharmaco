@@ -1,7 +1,7 @@
 <DATAFILE>
 
 [FILEINFO]
-file='Pharmaco-main/Exercice 1/tumeur_Dose.csv'
+file='../Exercice 1/tumeur_Dose.csv'
 delimiter = comma
 header = {ID, time, SLD, AGE, BLIVER, BHBG, dose}
 
@@ -27,7 +27,7 @@ g = {distribution=logNormal, typical=g_pop, sd=omega_g}
 [LONGITUDINAL]
 input = {a}
 
-file = 'Pharmaco-main/Fichiers MLX/Modele_Wang.txt'
+file = 'Modele_Wang.txt'
 
 DEFINITION:
 SLD_ = {distribution=logNormal, prediction=SLD, errorModel=constant(a)}
@@ -37,13 +37,13 @@ data = SLD
 model = SLD_
 
 <PARAMETER>
-BSLD_pop = {value=74.28, method=MLE}
+BSLD_pop = {value=74.28085, method=MLE}
 a = {value=1, method=MLE}
-d_pop = {value=1.44, method=MLE}
-g_pop = {value=0.09, method=MLE}
-omega_BSLD = {value=1, method=MLE}
-omega_d = {value=0.37, method=MLE}
-omega_g = {value=0.05, method=MLE}
+d_pop = {value=0.004035, method=MLE}
+g_pop = {value=0.09255, method=MLE}
+omega_BSLD = {value=50.05228, method=MLE}
+omega_d = {value=0.000902, method=MLE}
+omega_g = {value=0.045398, method=MLE}
 
 <MONOLIX>
 

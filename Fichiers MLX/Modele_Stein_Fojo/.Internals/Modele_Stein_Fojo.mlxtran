@@ -14,7 +14,6 @@ BLIVER = {use=covariate, type=categorical}
 BHBG = {use=covariate, type=continuous}
 dose = {use=amount}
 
-[FILTER]
 <MODEL>
 
 [INDIVIDUAL]
@@ -38,14 +37,14 @@ data = SLD
 model = SLD_
 
 <PARAMETER>
-BSLD_pop = {value=1, method=MLE}
+BSLD_pop = {value=74.28085, method=MLE}
 a = {value=1, method=MLE}
 b = {value=0.3, method=MLE}
-d_pop = {value=1, method=MLE}
-g_pop = {value=1, method=MLE}
-omega_BSLD = {value=1, method=MLE}
-omega_d = {value=1, method=MLE}
-omega_g = {value=1, method=MLE}
+d_pop = {value=0.004035, method=MLE}
+g_pop = {value=0.00167, method=MLE}
+omega_BSLD = {value=50.05228, method=MLE}
+omega_d = {value=0.000902, method=MLE}
+omega_g = {value=0.005555, method=MLE}
 
 <MONOLIX>
 

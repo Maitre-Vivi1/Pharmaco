@@ -1,0 +1,4 @@
+eta,statistics,p-value
+eta_BSLD,0.976068,0.690636
+eta_d,0.979528,0.147249
+eta_g,0.967132,0.177007
