@@ -1,7 +1,7 @@
 eta1,eta2,coeff,statistics,p-value
-eta_BSLD,eta_d,0,-1.11061,0.27227
-eta_BSLD,eta_g,0,0.958569,0.342579
-eta_BSLD,eta_phi,0,-0.330866,0.742186
-eta_d,eta_g,0,-1.86289,0.0686026
-eta_d,eta_phi,0,-0.702882,0.485524
-eta_g,eta_phi,0,-1.22572,0.226283
+eta_BSLD,eta_d,0,-1.21938,0.228657
+eta_BSLD,eta_g,0,0.397966,0.69242
+eta_BSLD,eta_phi,0,-0.376876,0.707927
+eta_d,eta_g,0,-1.05632,0.296112
+eta_d,eta_phi,0,-1.91115,0.0619668
+eta_g,eta_phi,0,-0.145336,0.885054

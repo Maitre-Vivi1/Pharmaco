@@ -1,0 +1,31 @@
+DESCRIPTION: Modèle de cinétique virale
+
+[LONGITUDINAL]
+input = {beta, delta, p}
+
+EQUATION:
+odeType=stiff
+
+;Initial conditions
+t_0 = 0
+T_0 = 1.33*10^6
+I1_0 = 0
+I2_0 = 0
+V_0 = 0.03
+
+;Known variables
+k = 5*t^-1
+c = 10*t^-1
+
+;Ordinary Differential Equations
+ddt_T = -beta*V*T
+ddt_I1 = beta*V*T-k*I1
+ddt_I2 = k*I1-delta*I2
+ddt_V = p*I2-c*V
+
+;Transformation for the log10 scaled V
+SV = log10(V)
+
+OUTPUT:
+output = {SV}
+

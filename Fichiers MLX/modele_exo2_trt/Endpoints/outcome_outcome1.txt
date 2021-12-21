@@ -1,0 +1,14 @@
+id,outcome1,group
+1,NaN,simulationGroup1
+2,NaN,simulationGroup1
+3,NaN,simulationGroup1
+4,0.7800248,simulationGroup1
+5,NaN,simulationGroup1
+6,1.35869,simulationGroup1
+7,NaN,simulationGroup1
+8,NaN,simulationGroup1
+9,NaN,simulationGroup1
+10,0.9009173,simulationGroup1
+11,NaN,simulationGroup1
+12,NaN,simulationGroup1
+13,NaN,simulationGroup1

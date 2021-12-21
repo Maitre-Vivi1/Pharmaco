@@ -1,0 +1,2 @@
+geometricMean,variationCoeff,group
+0.9847013,0.3012588,simulationGroup1

@@ -1,0 +1,70 @@
+
+<MODEL>
+
+[INDIVIDUAL]
+input = {beta_pop, omega_beta, delta_pop, omega_delta, p_pop, omega_p, corr_delta_beta, corr_p_beta, corr_p_delta}
+
+DEFINITION:
+beta = {distribution=logNormal, typical=beta_pop, sd=omega_beta}
+delta = {distribution=logNormal, typical=delta_pop, sd=omega_delta}
+p = {distribution=logNormal, typical=p_pop, sd=omega_p}
+correlation = {level=id, r(delta, beta)=corr_delta_beta, r(p, beta)=corr_p_beta, r(p, delta)=corr_p_delta}
+
+[LONGITUDINAL]
+input = {b}
+
+file = '../ModelFile/viral kinetic.txt'
+
+DEFINITION:
+LVL = {distribution=normal, prediction=SV, errorModel=proportional(b)}
+
+<SIMULX>
+
+[SETTINGS]
+GLOBAL:
+exportpath='../'
+
+[DEFINITION]
+OCCASION:
+file='../ExternalFiles/mlx_subjects.txt'
+
+POPULATION:
+parameters={beta_pop, delta_pop, p_pop, corr_delta_beta, corr_p_beta, corr_p_delta, omega_beta, omega_delta, omega_p, b}
+'mlx_Pop' = {{{values={31.94822695229434, 0.1770693287989289, 0.0203125056913379, -0.998562470947441, -0.9989705831404941, 0.9987515034228186, 0.9208055578198588, 0.5398337592751119, 2.223972609108295, 0.3786046751502203}}}}
+
+OUTPUT:
+'mlx_LVL' = {output=LVL, file='../ExternalFiles/mlx_LVL.txt'}
+'mlx_SV' = {output=SV, {{start=5, interval=0.1124562248995984, final=33.0016}}}
+
+INDIVIDUAL:
+parameters={beta, delta, p}
+'mlx_PopIndiv' = {{{values={31.94822695229434, 0.1770693287989289, 0.0203125056913379}}}}
+'mlx_CondMean' = {file='../ExternalFiles/mlx_CondMean.txt'}
+'mlx_EBEs' = {file='../ExternalFiles/mlx_EBEs.txt'}
+'mlx_CondDistSample' = {file='../ExternalFiles/mlx_CondDistSample.txt'}
+
+TREATMENT:
+'trt' = {{{times={5}, amounts={5}}}, adm=1}
+
+[SIMULATION]
+GROUPS:
+'simulationGroup1'={size=13, parameter='mlx_Pop', remaining={b=1}, outputs={'mlx_LVL'}, treatment={'trt'}}
+sharedIds={output}
+
+[EXPLORATION]
+GROUPS:
+'explorationGroup1'={remaining={b=1}, parameter='mlx_PopIndiv', outputs={'mlx_SV'}, treatment={'trt'}}
+
+[ENDPOINT]
+OUTCOME:
+'outcome1' = {outputElement='mlx_LVL', baseline=ratio, statistic=avg}
+
+OUTPUT:
+referenceGroup='simulationGroup1'
+decisionCriterion=false
+'endpoint1' = { outcome='outcome1', function=geometricMean, criterion={type=statisticalTest, test='value!=1', pValue=0.05} }
+
+[TASKS]
+simulation()
+endpoint()
+

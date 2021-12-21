@@ -30,7 +30,7 @@ input = {a}
 file = 'Modele_Stein_Fojo.txt'
 
 DEFINITION:
-SLD_ = {distribution=normal, prediction=SLD, errorModel=constant(a)}
+SLD_ = {distribution=logNormal, prediction=SLD, errorModel=constant(a)}
 
 <FIT>
 data = SLD

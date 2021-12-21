@@ -1,0 +1,2 @@
+parameter,covariate,statistics,p-value,test
+BSLD,beta_BSLD_BLIVER_TRUE,1.88154,0.0661002,t-Test

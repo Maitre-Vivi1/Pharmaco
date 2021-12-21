@@ -1,0 +1,14 @@
+id,time,amt,tinf,admtype,washout,group
+1,5,5,,1,0,simulationGroup1
+2,5,5,,1,0,simulationGroup1
+3,5,5,,1,0,simulationGroup1
+4,5,5,,1,0,simulationGroup1
+5,5,5,,1,0,simulationGroup1
+6,5,5,,1,0,simulationGroup1
+7,5,5,,1,0,simulationGroup1
+8,5,5,,1,0,simulationGroup1
+9,5,5,,1,0,simulationGroup1
+10,5,5,,1,0,simulationGroup1
+11,5,5,,1,0,simulationGroup1
+12,5,5,,1,0,simulationGroup1
+13,5,5,,1,0,simulationGroup1

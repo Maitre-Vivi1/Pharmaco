@@ -1,0 +1,2 @@
+parameter,statistics(sa),p-value(sa)
+beta_BSLD_BLIVER_TRUE,1.94676,0.0516

@@ -1,5 +1,5 @@
 parameter,statistics,p-value,test
-BSLD,0.977263,0.691188,Shapiro-Wilk
-d,0.969951,0.303409,Shapiro-Wilk
-g,0.976993,0.721027,Shapiro-Wilk
-phi,0.968341,0.0678939,Shapiro-Wilk
+BSLD,0.0677728,0.983349,Kolmogorov-Smirnov
+d,0.979053,0.942878,Shapiro-Wilk
+g,0.975175,0.400827,Shapiro-Wilk
+phi,0.96968,0.309233,Shapiro-Wilk
