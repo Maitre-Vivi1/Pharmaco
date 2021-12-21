@@ -1,0 +1,60 @@
+<DATAFILE>
+
+[FILEINFO]
+file='data_vl_intercept.csv'
+delimiter = comma
+header = {id, Time_sympt, Time_inf, LVL}
+
+[CONTENT]
+id = {use=identifier}
+Time_inf = {use=time}
+LVL = {use=observation, name=LVL, type=continuous}
+
+<MODEL>
+
+[INDIVIDUAL]
+input = {beta_pop, omega_beta, delta_pop, omega_delta, p_pop, omega_p, corr_delta_beta, corr_p_beta, corr_p_delta}
+
+DEFINITION:
+beta = {distribution=logNormal, typical=beta_pop, sd=omega_beta}
+delta = {distribution=logNormal, typical=delta_pop, sd=omega_delta}
+p = {distribution=logNormal, typical=p_pop, sd=omega_p}
+correlation = {level=id, r(delta, beta)=corr_delta_beta, r(p, beta)=corr_p_beta, r(p, delta)=corr_p_delta}
+
+[LONGITUDINAL]
+input = {b}
+
+file = 'viral kinetic.txt'
+
+DEFINITION:
+LVL = {distribution=normal, prediction=SV, errorModel=proportional(b)}
+
+<FIT>
+data = LVL
+model = LVL
+
+<PARAMETER>
+b = {value=0.3, method=MLE}
+beta_pop = {value=5, method=MLE}
+corr_delta_beta = {value=0, method=MLE}
+corr_p_beta = {value=0, method=MLE}
+corr_p_delta = {value=0, method=MLE}
+delta_pop = {value=0.5, method=MLE}
+omega_beta = {value=1, method=MLE}
+omega_delta = {value=1, method=MLE}
+omega_p = {value=1, method=MLE}
+p_pop = {value=0.9, method=MLE}
+
+<MONOLIX>
+
+[TASKS]
+populationParameters()
+individualParameters(method = {conditionalMean, conditionalMode })
+fim(method = StochasticApproximation)
+logLikelihood(method = ImportanceSampling)
+plotResult(method = {indfits, parameterdistribution, covariancemodeldiagnosis, covariatemodeldiagnosis, obspred, vpc, residualsscatter, residualsdistribution, randomeffects, saemresults })
+
+[SETTINGS]
+GLOBAL:
+exportpath = 'Viral_cinetic'
+
