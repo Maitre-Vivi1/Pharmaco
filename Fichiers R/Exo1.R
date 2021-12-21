@@ -84,7 +84,15 @@ ggplot(data = tumeur, aes(x = time, y = SLD, col = ID)) +
   geom_line() +
   theme(legend.position='none') +
   p +
-  ggtitle("Évolution de la taille tumorale chez les patients en fonction du temps")
+  ggtitle("Évolution de la taille tumorale chez les patients en fonction du temps\n(en jours post-inclusion)")
+
+temps_moy <- c()
+for (i in levels(tumeur$ID)) {
+  temps_moy <- c(temps_moy, min(tumeur$time[which(tumeur$ID==i)]))
+}
+max(temps_moy)
+temps_med <- median(temps_moy)
+temps_moy <- mean(temps_moy)
 
 
 # Modele de wang ----------------------------------------------------------
@@ -173,7 +181,7 @@ d_sd_SteinFojo <-0.00090200/0.004035*d_SteinFojo
 # Pour phi ----------------------------------------------------------------
 
 phi = 1 - mean(tumeur$indice)
-
+phi_sd = sd(tumeur$indice)
 
 # Pour g ------------------------------------------------------------------
 
@@ -181,21 +189,35 @@ phi = 1 - mean(tumeur$indice)
 reg_param_croiss_Chatterjee <- lme(log(SLD)~time , data = tumeur[which(tumeur$indice==1),], random = ~ 1 + time | ID, method = "ML")
 summary(reg_param_croiss_Chatterjee)
 
-g = 0.001670 - log(1-phi)
+# g = 0.001670
 
-g_Chatterjee
-g_sd_Chatterjee
+g_Chatterjee <- 0.001670
+g_sd_Chatterjee <- 0.0005555/0.001670*g_Chatterjee
 
 # Pour d ------------------------------------------------------------------
 
 
-reg_param_decroiss_Chatterjee <- lme(SLD~time , data = tumeur[which(tumeur$indice==0),], random = ~ 1 + time | ID, method = "ML")
+reg_param_decroiss_Chatterjee <- lme(log(SLD)~time , data = tumeur[which(tumeur$indice==0),], random = ~ 1 + time | ID, method = "ML")
 summary(reg_param_decroiss_Chatterjee)
 
-# BSLD*phi*exp(-g*t) = -0.23689
-# g*t = log(-0.23689 /phi / BSLD)
+
+d_Chatterjee <- 0.004035
+d_sd_Chatterjee <- 0.00090200/0.004035*g_Chatterjee
 
 
+
+
+
+
+
+# moyenne des écarts-types / total des écarts-types
+
+abc <- c()
+for (i in levels(tumeur$ID)) {
+  abc <- c(abc, sd(tumeur$SLD[which(tumeur$indice[which(tumeur$ID==i)] == 1)]))
+}
+
+mean(abc,   na.rm = T)
 
 
 
